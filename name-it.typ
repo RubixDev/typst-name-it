@@ -36,14 +36,9 @@
     message: "argument must be either an integer or a string of an integer, got " + repr(num),
   )
   let name = ""
-  if type(num) == int and num < 0 {
-    name = negative-prefix
-    num = calc.abs(num)
-  } else if type(num) == str and num.at(0) == "-" {
-    name = negative-prefix
-    num = num.slice(1)
-  }
   num = str(num)
+  let is-negative = num.at(0) == "-"
+  if is-negative { num = num.slice(1) }
   let group-names = ("", "thousand", "million", "billion", "trillion", "quadrillion", "quintillion", "sextillion", "septillion", "octillion", "nonillion", "decillion")
   // pad left with zeros to a multiple of 3
   num = ((int((num.len() - 1) / 3) + 1) * 3 - num.len()) * "0" + num
@@ -58,5 +53,7 @@
       name += group-name
     }
   }
-  name.replace(regex("^ *and"), "").trim().replace(regex(" +"), " ")
+  name = name.replace(regex("^ *and"), "").trim().replace(regex(" +"), " ")
+  if is-negative { name = negative-prefix + " " + name }
+  return name
 }
