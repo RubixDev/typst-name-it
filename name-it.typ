@@ -18,7 +18,7 @@
         + tens
       )
     }
-    let names = ("", none, "twenty-", "thirty-", "fourty-", "fifty-", "sixty-", "seventy-", "eighty-", "ninety-")
+    let names = ("", none, "twenty-", "thirty-", "forty-", "fifty-", "sixty-", "seventy-", "eighty-", "ninety-")
     let teens = ("ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen")
     let name = names.at(int(num.at(0)))
     if name != none { num = num.slice(1) }
