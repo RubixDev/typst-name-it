@@ -1,4 +1,4 @@
-#let name-it(num, show-and: true, negative-prefix: "negative") = {  
+#let name-it(num, show-and: true, negative-prefix: "negative") = {
   let digit-name(digit, show-zero) = {
     let names = ("zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine")
     if digit == "0" and not show-zero {
