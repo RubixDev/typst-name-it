@@ -1,4 +1,4 @@
-#let name-it(num, show-and: true, negative-prefix: "negative") = {
+#let name-it(num, show-and: true, negative-prefix: "negative") = {  
   let digit-name(digit, show-zero) = {
     let names = ("zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine")
     if digit == "0" and not show-zero {
@@ -32,13 +32,13 @@
 
   assert(
     type(num) == int
-    or type(num) == str and num.contains(regex("^-?\d+$")),
+    or type(num) == str and num.contains(regex("^[-−]?\d+$")),
     message: "argument must be either an integer or a string of an integer, got " + repr(num),
   )
   let name = ""
   num = str(num)
-  let is-negative = num.at(0) == "-"
-  if is-negative { num = num.slice(1) }
+  let is-negative = num.at(0) in ("-", "−")
+  if is-negative { num = num.clusters().slice(1).join() }
   let group-names = ("", "thousand", "million", "billion", "trillion", "quadrillion", "quintillion", "sextillion", "septillion", "octillion", "nonillion", "decillion")
   // pad left with zeros to a multiple of 3
   num = ((int((num.len() - 1) / 3) + 1) * 3 - num.len()) * "0" + num
