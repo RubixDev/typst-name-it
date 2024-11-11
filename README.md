@@ -7,7 +7,7 @@ Get the English names of integers.
 ![Example](./example.png)
 
 ```typ
-#import "@preview/name-it:0.1.0": name-it
+#import "@preview/name-it:0.1.2": name-it
 
 #set page(width: auto, height: auto, margin: 1cm)
 
